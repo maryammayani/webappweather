@@ -19,7 +19,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1'
+          dotnet-version: '8.0'
           include-prerelease: true
 
       - name: Build with dotnet
@@ -40,8 +40,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
+
 
     steps:
       - name: Download artifact from build job
@@ -63,4 +62,5 @@ jobs:
           app-name: 'webapptuturial5'
           slot-name: 'Production'
           package: .
+          
           
